@@ -1,13 +1,15 @@
 name: Terraform code pipeline
  
 on:
-  push: ['main']
-  pull_request: ['main']
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 
 jobs:
   init:
-    runs_on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v2
@@ -26,5 +28,4 @@ jobs:
     - name: Terraform Apply
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       run: terraform apply -auto-approve -input=false
-      environment: production  # Requires manual approval
-      run: terraform apply -auto-approve -input=false
+   
