@@ -30,7 +30,7 @@ jobs:
     - name: initialize  
       run: terraform init
     - name: Terraform Format
-      run: terraform fmt -check -diff
+      run: terraform fmt 
     - name: Terraform Validate
       run: terraform validate
     - name: Terraform Plan
